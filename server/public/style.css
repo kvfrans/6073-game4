@@ -1,0 +1,71 @@
+:root {
+  /* calc(var(--jy) + var(--jradius) - var(--stickradius) + 1px) */
+  --jradius: 250px;
+  --stickradius: 50px;
+
+  --jx: calc(var(--jradius) - var(--stickradius) + 1px);
+  --jy: calc(var(--jradius) - var(--stickradius) + 1px);
+}
+
+html,
+body,
+div {
+  overflow: hidden;
+}
+
+body {
+  font-family: sans-serif;
+  position: relative;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-justifyCenter {
+  justify-content: center;
+}
+
+.flex-alignCenter {
+  align-items: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 680px;
+  text-align: center;
+}
+
+.joystick {
+  --joy-color: black;
+
+  width: calc(var(--jradius) * 2);
+  height: calc(var(--jradius) * 2);
+  border: 1px grey solid;
+  border-radius: 50%;
+  position: relative;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+.joystick-stick {
+  width: calc(var(--stickradius) * 2);
+  height: calc(var(--stickradius) * 2);
+  background-color: var(--joy-color);
+  position: absolute;
+  border-radius: 50%;
+  top: var(--jy);
+  left: var(--jx);
+  transition: all 0.05s;
+}
+
+.joinContainer {
+  margin: 10px 0;
+}
