@@ -59,6 +59,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FreeDraw\Scripts\Drawable.cs" />
+    <Compile Include="Assets\FreeDraw\Scripts\DrawingSettings.cs" />
+    <Compile Include="Assets\FreeDraw\Scripts\RemoteCanvas.cs" />
     <Compile Include="Assets\Scripts\MasterControl.cs" />
     <Compile Include="Assets\Scripts\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Scripts\WebSocket\ws_script.cs" />
@@ -263,6 +266,9 @@
     <Reference Include="nunit.framework">
       <HintPath>/Applications/Unity/Hub/Editor/2019.1.10f1/Unity.app/Contents/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>/Users/kevin/Documents/Unity/6073-game4/Assets/Scripts/WebSocket/websocket-sharp.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>/Users/kevin/Documents/Unity/6073-game4/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
@@ -271,9 +277,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>/Users/kevin/Documents/Unity/6073-game4/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="websocket-sharp">
-      <HintPath>/Users/kevin/Documents/Unity/6073-game4/Assets/Scripts/WebSocket/websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>/Applications/Unity/Hub/Editor/2019.1.10f1/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

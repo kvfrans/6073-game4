@@ -5,6 +5,13 @@
       <e p="6073-game4.sln" t="IncludeFlat" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="FreeDraw" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="Drawable.cs" t="Include" />
+            <e p="DrawingSettings.cs" t="Include" />
+            <e p="RemoteCanvas.cs" t="Include" />
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="MasterControl.cs" t="Include" />
           <e p="WebSocket" t="Include">
