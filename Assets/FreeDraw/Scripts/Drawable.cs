@@ -1,6 +1,12 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+
+[Serializable]
+public class CanvasColors {
+    public Color32[] colors;
+}
 
 namespace FreeDraw
 {
@@ -39,11 +45,13 @@ namespace FreeDraw
         Texture2D drawable_texture;
 
         Vector2 previous_drag_position;
-        Color[] clean_colours_array;
+        public Color[] clean_colours_array;
         Color transparent;
-        Color32[] cur_colors;
+        public Color32[] cur_colors;
         bool mouse_was_previously_held_down = false;
         bool no_drawing_on_current_drag = false;
+
+        public MasterControl mc;
 
 
 

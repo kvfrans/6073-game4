@@ -26,6 +26,7 @@ public class StartScene : MonoBehaviour
     void joinButtonClicked()
     {
         Debug.Log("Join button clicked");
+        
         SceneManager.LoadScene("LobbyScene", LoadSceneMode.Single);
     }
 }

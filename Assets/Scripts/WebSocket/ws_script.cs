@@ -5,14 +5,12 @@ using System;
 public class ws_script : MonoBehaviour
 {
   public int NetworkSpeed = 5;
-  public string ip = "localhost";
-  public string port = "8000";
   public string gameId = "jynkev";
 
   IEnumerator Start()
   {
     // Connect to Websocket
-    WebSocket w = new WebSocket(new Uri("ws://" + ip + ":" + port));
+    WebSocket w = new WebSocket(new Uri("ws://" + Constants.IP + ":" + Constants.PORT));
     yield return StartCoroutine(w.Connect());
 
     w.SendString("UNITY|" + gameId + "|NEW");
