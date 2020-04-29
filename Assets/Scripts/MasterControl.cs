@@ -1,46 +1,140 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class MasterControl : MonoBehaviour {
   
-  public int NetworkSpeed = 5;
-  public string ip = "localhost";
-  public string port = "8000";
-  public string gameId = "CMS";
+    public int NetworkSpeed = 5;
+    public string gameId = "CMS";
 
-  private int client_id = -1;
+    private int client_id = -1;
+    private WebSocket socket;
 
-  void Start() {
-    StartCoroutine(Socket());
-  }
+    public SpriteRenderer canvas;
+    public SpriteRenderer canvas2;
 
-  IEnumerator Socket() {
-    // Connect to Websocket
-    WebSocket w = new WebSocket(new Uri("ws://" + ip + ":" + port));
-    yield return StartCoroutine(w.Connect());
-    int uniqueid = (int) (Random.value * 99999);
-    w.SendString("JOIN|" + uniqueid);
-    Debug.Log("Sent joinZ");
-    while (true)
-    {
-      string reply = w.RecvString();
-      while (reply != null)
-      {
-        Debug.Log(reply);
-        string[] split = reply.Split('|');
-        if (split[0] == "CONFIRM") {
-          string uid = split[1];
-          if (uid == uniqueid.ToString()) {
-            client_id = System.Convert.ToInt32(split[2]);;
-            Debug.Log("My id is now " + client_id);
-          }
-        }
-        reply = w.RecvString();
-      }
-      yield return 0;
+    // start scene
+    private Button joinButton;
+
+    // lobby scene
+    private GameObject[] lobbyPlayerAvatars;
+    private Text[] lobbyPlayerUsernames;
+    private GameObject waitingMsg;
+    private Button startButton;
+
+    // game variables
+    private string username;
+    private string[] players;
+
+    void Start() {
+        UnityEngine.Object.DontDestroyOnLoad(this);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        joinButton = GameObject.Find("Join Button").GetComponent<Button>();
+        joinButton.onClick.AddListener(() => joinButtonClicked());
+        joinButton.gameObject.SetActive(true);
+        Debug.Log("Start scene initiated and join button activated");
+        // StartCoroutine(DrawableSend());
+        username = "ezou";
     }
-  }
+
+    void joinButtonClicked() {
+        Debug.Log("Join button clicked");
+        StartCoroutine(Socket());
+        SceneManager.LoadScene("LobbyScene", LoadSceneMode.Single);
+    }
+
+    void startButtonClicked() {
+        Debug.Log("Start button clicked");
+        socket.SendString("START|" + username);
+    }
+
+    // called second
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        Debug.Log("OnSceneLoaded: " + scene.name + ", mode: " + mode);
+        if (scene.name == "LobbyScene")
+            StartLobby();
+    }
+
+    void StartLobby() {
+        lobbyPlayerAvatars = new GameObject[Constants.NUM_PLAYERS];
+        lobbyPlayerUsernames = new Text[Constants.NUM_PLAYERS];
+        for (int i = 1; i <= Constants.NUM_PLAYERS; i++) {
+            // find player objects in lobby
+            lobbyPlayerAvatars[i - 1] = GameObject.Find("player" + i);
+            lobbyPlayerUsernames[i - 1] = GameObject.Find("player" + i + "_text").GetComponent<Text>();
+            // by default, disable all player objects
+            lobbyPlayerAvatars[i - 1].SetActive(false);
+            lobbyPlayerUsernames[i - 1].gameObject.SetActive(false);
+        }
+
+        // find other objects
+        waitingMsg = GameObject.Find("waiting");
+        startButton = GameObject.Find("Start Button").GetComponent<Button>();
+        // setup button
+        startButton.onClick.AddListener(() => startButtonClicked());
+        startButton.gameObject.SetActive(false);
+    }
+
+    IEnumerator Socket() {
+        // Connect to Websocket
+        socket = new WebSocket(new Uri("ws://" + Constants.IP + ":" + Constants.PORT));
+        yield return StartCoroutine(socket.Connect());
+        socket.SendString("JOIN|" + username);
+        Debug.Log("Sent join request");
+        while (true) {
+            string reply = socket.RecvString();
+            while (reply != null) {
+                // Debug.Log(reply);
+                string[] split = reply.Split('|');
+                if (split[0] == "CONFIRM") {
+                    string uid = split[1];
+                    if (uid == username) {
+                        client_id = System.Convert.ToInt32(split[2]);;
+                        Debug.Log("My id is now " + client_id);
+                    }
+                }
+                else if (split[0] == "PLAYERS") {
+                    Debug.Log(split[1]);
+                    players = split[1].Split('_');
+                    for (int i = 0; i < players.Length; i++) {
+                        lobbyPlayerAvatars[i].SetActive(true);
+                        lobbyPlayerUsernames[i].text = players[i];
+                        lobbyPlayerUsernames[i].gameObject.SetActive(true);
+                    }
+                    if (players.Length == Constants.NUM_PLAYERS) {
+                        waitingMsg.SetActive(false);
+                        startButton.gameObject.SetActive(true);
+                    }
+                }
+                else if (split[0] == "DRAW") {
+                    // Debug.Log(reply);
+                    string b64 = split[2];
+                    byte[] imageData = Convert.FromBase64String(b64);
+                    canvas2.sprite.texture.LoadImage(imageData);
+                }
+
+                reply = socket.RecvString();
+            }
+            yield return 0;
+        }
+    }
+
+    IEnumerator DrawableSend() {
+        while (true) {
+            yield return new WaitForSeconds(1.0f);
+            Debug.Log("sending bytes");
+            byte[] imageData;
+            imageData = canvas.sprite.texture.EncodeToPNG();
+            string s = Convert.ToBase64String(imageData);
+            SendStringServer("DRAW", s);
+        }
+    }
+
+    public void SendStringServer(string command, string s) {
+        socket.SendString(command + "|" + client_id.ToString() + "|" + s);
+    }
 }
