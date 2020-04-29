@@ -5,7 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class GameFlow : MonoBehaviour
 {
-    private bool isScholar = true;
+
+    protected static GameFlow instance;
+    public static GameFlow Instance
+    {
+        get
+        {
+            if (instance != null)
+                return instance;
+            instance = FindObjectOfType<GameFlow>();
+            return instance;
+        }
+    }
+    public bool isScholar = true;
     public string state = "Ready";
     public TextMesh roleText;
     public TextMesh timerText;
@@ -15,12 +27,12 @@ public class GameFlow : MonoBehaviour
 
     void Start()
     {
-        word = WordBank.GetRandomWord();
+        GlobalVariables.word = WordBank.GetRandomWord();
         roleText.text = "";
         timer = 30;
         if (isScholar)
         {
-            roleText.text = "You are the scholar! The word is " + word;
+            roleText.text = "You are the scholar! The word is " + GlobalVariables.word;
         }
         else
         {
@@ -34,6 +46,7 @@ public class GameFlow : MonoBehaviour
         if (timer < 0)
         {
             roleText.text = "DONE!";
+            SceneManager.LoadScene("DiscussionScene");
         }
         else if (state == "Ready")
         {

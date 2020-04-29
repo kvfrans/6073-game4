@@ -21,7 +21,6 @@ public class WordBank : MonoBehaviour
 
     public static string GetRandomWord()
     {
-        //System.Random random = new System.Random();
         int index = Random.Range(0, words.Length);
         return words[index];
     }
