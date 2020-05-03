@@ -29,7 +29,7 @@ public class GameFlow : MonoBehaviour
     {
         GlobalVariables.word = WordBank.GetRandomWord();
         roleText.text = "";
-        timer = 30;
+        timer = 10;
         if (isScholar)
         {
             roleText.text = "You are the scholar! The word is " + GlobalVariables.word;
@@ -43,9 +43,8 @@ public class GameFlow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer < 0)
+        if (state == "Done")
         {
-            roleText.text = "DONE!";
             SceneManager.LoadScene("DiscussionScene");
         }
         else if (state == "Ready")
@@ -58,6 +57,10 @@ public class GameFlow : MonoBehaviour
         else if (state == "Drawing")
         {
             timer -= Time.deltaTime;
+            if (timer < 0)
+            {
+                state = "Done";
+            }
             timerText.text = "" + Mathf.Round(timer * 10f) / 10f;
         }
     }

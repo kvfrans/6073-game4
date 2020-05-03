@@ -547,7 +547,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480866657}
-  m_Text: 30
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -1253,9 +1253,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 749892207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8165ca02371d54923bf91c8aa806f137, type: 3}
+  m_Script: {fileID: 11500000, guid: 4dc5e4009df194fbcbb830f563699dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isScholar: 1
+  state: Ready
+  roleText: {fileID: 1937479228}
+  timerText: {fileID: 480866658}
 --- !u!1 &817698279
 GameObject:
   m_ObjectHideFlags: 0
