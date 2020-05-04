@@ -377,8 +377,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294541833}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: -7.47, y: 0.87, z: 0}
   m_LocalScale: {x: 0.08, y: 0.08, z: 1}
+=======
+  m_LocalPosition: {x: -6.78, y: -4.28, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+>>>>>>> 2adf1bc560ada095a4f0a9d5e6bd3ea31a43c0a7
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -717,7 +722,7 @@ TextMesh:
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 200
+  m_FontSize: 180
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 0}
@@ -770,7 +775,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576824481}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: -7.34, y: 4.4, z: 0}
+=======
+  m_LocalPosition: {x: -6.81, y: -3.66, z: 0}
+>>>>>>> 2adf1bc560ada095a4f0a9d5e6bd3ea31a43c0a7
   m_LocalScale: {x: 0.04, y: 0.04, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1037,6 +1046,7 @@ GameObject:
   - component: {fileID: 975978400}
   - component: {fileID: 975978399}
   - component: {fileID: 975978401}
+  - component: {fileID: 975978402}
   - component: {fileID: 975978398}
   m_Layer: 8
   m_Name: ReadWriteEnabledImageToDrawOn
@@ -1155,6 +1165,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10, y: 7.5}
   m_EdgeRadius: 0
+--- !u!114 &975978402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975978397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c420e98ed38d04fc18a085aebec892b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isScholar: 0
+  state: Ready
+  roleText: {fileID: 576824482}
+  timerText: {fileID: 294541834}
 --- !u!1 &1410634902
 GameObject:
   m_ObjectHideFlags: 0
