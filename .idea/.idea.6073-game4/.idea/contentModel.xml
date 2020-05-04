@@ -7,19 +7,19 @@
       <e p="Assets" t="Include">
         <e p="FreeDraw" t="Include">
           <e p="Scripts" t="Include">
-            <e p="Discussion.cs" t="Include" />
-            <e p="Drawable.cs" t="Include" />
-            <e p="DrawingSettings.cs" t="Include" />
-            <e p="GameFlow.cs" t="Include" />
-            <e p="GlobalVariables.cs" t="Include" />
-            <e p="RemoteCanvas.cs" t="Include" />
             <e p="WordBank.cs" t="Include" />
           </e>
         </e>
         <e p="Scripts" t="Include">
           <e p="Constants.cs" t="Include" />
+          <e p="Discussion.cs" t="Include" />
+          <e p="Drawable.cs" t="Include" />
           <e p="DrawingControl.cs" t="Include" />
+          <e p="DrawingSettings.cs" t="Include" />
+          <e p="GameFlow.cs" t="Include" />
+          <e p="GlobalVariables.cs" t="Include" />
           <e p="MasterControl.cs" t="Include" />
+          <e p="RemoteCanvas.cs" t="Include" />
           <e p="StartScene.cs" t="Include" />
           <e p="WebSocket" t="Include">
             <e p="WebSocket.cs" t="Include" />

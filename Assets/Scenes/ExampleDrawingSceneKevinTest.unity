@@ -277,7 +277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03510ea897333a3478c3615be62b832e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transparency: 1
 --- !u!4 &198275829
 Transform:
   m_ObjectHideFlags: 0
@@ -524,7 +523,6 @@ GameObject:
   - component: {fileID: 380742143}
   - component: {fileID: 380742142}
   - component: {fileID: 380742141}
-  - component: {fileID: 380742144}
   m_Layer: 8
   m_Name: ReadWriteEnabledImageToDrawOn (1)
   m_TagString: Untagged
@@ -621,20 +619,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &380742144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 380742140}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd27eeccf2e0c499ca503a589e617b90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dr: {fileID: 975978398}
-  sr: {fileID: 380742142}
 --- !u!1 &477442126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,9 +1496,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 975978400}
-  - component: {fileID: 975978398}
   - component: {fileID: 975978399}
   - component: {fileID: 975978401}
+  - component: {fileID: 975978398}
   m_Layer: 8
   m_Name: ReadWriteEnabledImageToDrawOn
   m_TagString: Untagged
@@ -1531,7 +1515,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 975978397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 571045d48cec88d48848f53bf379f673, type: 3}
+  m_Script: {fileID: 11500000, guid: af95ecfd1ec344527ad85a2d137c39ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Drawing_Layers:
@@ -2044,7 +2028,6 @@ GameObject:
   - component: {fileID: 1579018916}
   - component: {fileID: 1579018915}
   - component: {fileID: 1579018914}
-  - component: {fileID: 1579018913}
   m_Layer: 8
   m_Name: ReadWriteEnabledImageToDrawOn (2)
   m_TagString: Untagged
@@ -2052,20 +2035,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1579018913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1579018912}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd27eeccf2e0c499ca503a589e617b90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dr: {fileID: 975978398}
-  sr: {fileID: 1579018915}
 --- !u!61 &1579018914
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2348,7 +2317,6 @@ GameObject:
   - component: {fileID: 2075677365}
   - component: {fileID: 2075677364}
   - component: {fileID: 2075677363}
-  - component: {fileID: 2075677362}
   m_Layer: 8
   m_Name: ReadWriteEnabledImageToDrawOn (3)
   m_TagString: Untagged
@@ -2356,20 +2324,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2075677362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2075677361}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd27eeccf2e0c499ca503a589e617b90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dr: {fileID: 975978398}
-  sr: {fileID: 2075677364}
 --- !u!61 &2075677363
 BoxCollider2D:
   m_ObjectHideFlags: 0

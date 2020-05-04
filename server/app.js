@@ -39,7 +39,7 @@ app.ws("/", (ws, req) => {
 
   // Everything comes to WS as a message
   ws.on("message", rawMsg => {
-    console.log(`Received: ${rawMsg}`);
+    // console.log(`Received: ${rawMsg}`);
     const [command,who,data] = String(rawMsg).split("|");
     if (command === "JOIN") {
       if (players.length >= 4) // too many people
@@ -49,14 +49,20 @@ app.ws("/", (ws, req) => {
       players.push(who);
       var playerStr = "";
       players.forEach((x) => playerStr += "_" + x);
-      ws.send("PLAYERS|" + playerStr.substring(1));
+      for(var i = 0; i < wsClients.length; i++) {
+        wsClients[i].send("PLAYERS|" + playerStr.substring(1));
+      }
       console.log("Client with uid %s now has id number %s", who, connected);
     }
     else if (command === "START") {
-      ws.send(String(rawMsg));
+      for(var i = 0; i < wsClients.length; i++) {
+        wsClients[i].send(String(rawMsg));
+      }
     }
     else if (command === "DRAW") {
-      ws.send(String(rawMsg));
+      for(var i = 0; i < wsClients.length; i++) {
+        wsClients[i].send(String(rawMsg));
+      }
     }
   });
 });
