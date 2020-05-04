@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Constants.cs" />
     <Compile Include="Assets\Scripts\Discussion.cs" />
     <Compile Include="Assets\Scripts\Drawable.cs" />
+    <Compile Include="Assets\Scripts\DrawingControl.cs" />
     <Compile Include="Assets\Scripts\DrawingSettings.cs" />
     <Compile Include="Assets\Scripts\GameFlow.cs" />
     <Compile Include="Assets\Scripts\GlobalVariables.cs" />
