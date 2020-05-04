@@ -24,15 +24,6 @@ public class Discussion : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Debug.Log("LOOK");
-        Debug.Log(GameFlow.Instance.isScholar);
-        if (GameFlow.Instance.isScholar)
-        {
-            promptText.GetComponent<Text>().text = "Who was the cheater?";
-        } else
-        {
-            promptText.GetComponent<Text>().text = "What was the word?";
-        }
     }
 
     // Update is called once per frame

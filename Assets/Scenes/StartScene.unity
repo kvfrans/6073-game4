@@ -687,7 +687,7 @@ MonoBehaviour:
   m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -708,7 +708,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 92.05347, y: 19.37967, z: 92.05347, w: 18.410706}
   m_textInfo:
     textComponent: {fileID: 1403542615}
     characterCount: 1
@@ -1544,6 +1544,9 @@ MonoBehaviour:
   NetworkSpeed: 5
   gameId: CMS
   dc: {fileID: 0}
+  word: 
+  isScholar: 1
+  joinGreeting: {fileID: 8300000, guid: cf44c28db95a9f14780278cc7a7bb0f6, type: 3}
 --- !u!1 &2130457696
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,22 +17,26 @@ public class GameFlow : MonoBehaviour
             return instance;
         }
     }
-    public bool isScholar = true;
+    public bool isScholar = false;
     public string state = "Ready";
     public TextMesh roleText;
     public TextMesh timerText;
-    private float timer = 0;
+    private float timer = 50;
+    public Transform cheaterBlock;
 
     public static string word;
 
-    void Start()
-    {
-        GlobalVariables.word = WordBank.GetRandomWord();
+    void Start() {
+        isScholar = GameObject.Find("MasterControl").GetComponent<MasterControl>().isScholar;
+        if (!isScholar) {
+            cheaterBlock.gameObject.SetActive(true);
+        }
+        
         roleText.text = "";
         timer = 10;
         if (isScholar)
         {
-            roleText.text = "You are the scholar! The word is " + GlobalVariables.word;
+            roleText.text = "You are the scholar! The word is " + GameObject.Find("MasterControl").GetComponent<MasterControl>().word;
         }
         else
         {
@@ -43,25 +47,10 @@ public class GameFlow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (state == "Done")
-        {
+        timer -= Time.deltaTime;
+        if (timer < 0) {
             SceneManager.LoadScene("DiscussionScene");
         }
-        else if (state == "Ready")
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                state = "Drawing";
-            }
-        }
-        else if (state == "Drawing")
-        {
-            timer -= Time.deltaTime;
-            if (timer < 0)
-            {
-                state = "Done";
-            }
-            timerText.text = "" + Mathf.Round(timer * 10f) / 10f;
-        }
+        timerText.text = "" + Mathf.Round(timer * 10f) / 10f;
     }
 }
