@@ -21,7 +21,7 @@ public class GameFlow : MonoBehaviour
     public string state = "Ready";
     public TextMesh roleText;
     public TextMesh timerText;
-    private float timer = 0;
+    private float timer = 10;
 
     public static string word;
 
@@ -42,25 +42,10 @@ public class GameFlow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (state == "Done")
-        {
+        timer -= Time.deltaTime;
+        if (timer < 0) {
             SceneManager.LoadScene("DiscussionScene");
         }
-        else if (state == "Ready")
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                state = "Drawing";
-            }
-        }
-        else if (state == "Drawing")
-        {
-            timer -= Time.deltaTime;
-            if (timer < 0)
-            {
-                state = "Done";
-            }
-            timerText.text = "" + Mathf.Round(timer * 10f) / 10f;
-        }
+        timerText.text = "" + Mathf.Round(timer * 10f) / 10f;
     }
 }
