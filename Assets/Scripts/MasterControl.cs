@@ -29,7 +29,8 @@ public class MasterControl : MonoBehaviour {
     private string username;
     private string[] players;
     private int cheater_id;
-    private string word;
+    public string word;
+    public bool isScholar = true;
 
     void Start() {
         UnityEngine.Object.DontDestroyOnLoad(this);
@@ -117,6 +118,9 @@ public class MasterControl : MonoBehaviour {
                 else if (split[0] == "START") {
                     cheater_id = System.Convert.ToInt32(split[1]);
                     word = split[2];
+                    if (cheater_id == client_id) {
+                        isScholar = false;
+                    }
                     SceneManager.LoadScene("ExampleDrawingSceneKevinTest");
                 }
                 else if (split[0] == "DRAW") {

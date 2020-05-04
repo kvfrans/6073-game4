@@ -20,6 +20,7 @@
           <e p="GlobalVariables.cs" t="Include" />
           <e p="MasterControl.cs" t="Include" />
           <e p="RemoteCanvas.cs" t="Include" />
+          <e p="SoundMixer.cs" t="Include" />
           <e p="StartScene.cs" t="Include" />
           <e p="WebSocket" t="Include">
             <e p="WebSocket.cs" t="Include" />

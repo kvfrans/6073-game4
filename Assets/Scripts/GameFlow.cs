@@ -25,14 +25,13 @@ public class GameFlow : MonoBehaviour
 
     public static string word;
 
-    void Start()
-    {
-        GlobalVariables.word = WordBank.GetRandomWord();
+    void Start() {
+        isScholar = GameObject.Find("MasterControl").GetComponent<MasterControl>().isScholar;
         roleText.text = "";
         timer = 10;
         if (isScholar)
         {
-            roleText.text = "You are the scholar! The word is " + GlobalVariables.word;
+            roleText.text = "You are the scholar! The word is " + GameObject.Find("MasterControl").GetComponent<MasterControl>().word;
         }
         else
         {

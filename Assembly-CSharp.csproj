@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\GlobalVariables.cs" />
     <Compile Include="Assets\Scripts\MasterControl.cs" />
     <Compile Include="Assets\Scripts\RemoteCanvas.cs" />
+    <Compile Include="Assets\Scripts\SoundMixer.cs" />
     <Compile Include="Assets\Scripts\StartScene.cs" />
     <Compile Include="Assets\Scripts\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Scripts\WebSocket\ws_script.cs" />
