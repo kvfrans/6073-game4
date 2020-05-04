@@ -14,8 +14,7 @@ public class MasterControl : MonoBehaviour {
     private int client_id = -1;
     private WebSocket socket;
 
-    public SpriteRenderer canvas;
-    public SpriteRenderer canvas2;
+    public DrawingControl dc;
 
     // start scene
     private Button joinButton;
@@ -29,6 +28,8 @@ public class MasterControl : MonoBehaviour {
     // game variables
     private string username;
     private string[] players;
+    private int cheater_id;
+    private string word;
 
     void Start() {
         UnityEngine.Object.DontDestroyOnLoad(this);
@@ -89,7 +90,7 @@ public class MasterControl : MonoBehaviour {
         while (true) {
             string reply = socket.RecvString();
             while (reply != null) {
-                // Debug.Log(reply);
+                Debug.Log(reply);
                 string[] split = reply.Split('|');
                 if (split[0] == "CONFIRM") {
                     string uid = split[1];
@@ -111,11 +112,60 @@ public class MasterControl : MonoBehaviour {
                         startButton.gameObject.SetActive(true);
                     }
                 }
+                else if (split[0] == "START") {
+                    cheater_id = System.Convert.ToInt32(split[1]);
+                    word = split[2];
+                    SceneManager.LoadScene("ExampleDrawingSceneKevinTest");
+                }
                 else if (split[0] == "DRAW") {
                     // Debug.Log(reply);
                     string b64 = split[2];
                     byte[] imageData = Convert.FromBase64String(b64);
-                    canvas2.sprite.texture.LoadImage(imageData);
+                    int who_drew = System.Convert.ToInt32(split[1]);
+                    if (client_id == 0) {
+                        if (who_drew == 1) {
+                            dc.canvas1.sprite.texture.LoadImage(imageData);
+                        }
+                        if (who_drew == 2) {
+                            dc.canvas2.sprite.texture.LoadImage(imageData);
+                        }
+                        if (who_drew == 3) {
+                            dc.canvas3.sprite.texture.LoadImage(imageData);
+                        }
+                    }
+                    if (client_id == 1) {
+                        if (who_drew == 0) {
+                            dc.canvas1.sprite.texture.LoadImage(imageData);
+                        }
+                        if (who_drew == 2) {
+                            dc.canvas2.sprite.texture.LoadImage(imageData);
+                        }
+                        if (who_drew == 3) {
+                            dc.canvas3.sprite.texture.LoadImage(imageData);
+                        }
+                    }
+                    if (client_id == 2) {
+                        if (who_drew == 0) {
+                            dc.canvas1.sprite.texture.LoadImage(imageData);
+                        }
+                        if (who_drew == 1) {
+                            dc.canvas2.sprite.texture.LoadImage(imageData);
+                        }
+                        if (who_drew == 3) {
+                            dc.canvas3.sprite.texture.LoadImage(imageData);
+                        }
+                    }
+                    if (client_id == 3) {
+                        if (who_drew == 0) {
+                            dc.canvas1.sprite.texture.LoadImage(imageData);
+                        }
+                        if (who_drew == 1) {
+                            dc.canvas2.sprite.texture.LoadImage(imageData);
+                        }
+                        if (who_drew == 2) {
+                            dc.canvas3.sprite.texture.LoadImage(imageData);
+                        }
+                    }
                 }
 
                 reply = socket.RecvString();
@@ -124,16 +174,7 @@ public class MasterControl : MonoBehaviour {
         }
     }
 
-    IEnumerator DrawableSend() {
-        while (true) {
-            yield return new WaitForSeconds(1.0f);
-            Debug.Log("sending bytes");
-            byte[] imageData;
-            imageData = canvas.sprite.texture.EncodeToPNG();
-            string s = Convert.ToBase64String(imageData);
-            SendStringServer("DRAW", s);
-        }
-    }
+
 
     public void SendStringServer(string command, string s) {
         socket.SendString(command + "|" + client_id.ToString() + "|" + s);

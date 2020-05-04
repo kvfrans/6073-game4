@@ -53,7 +53,7 @@ app.ws("/", (ws, req) => {
       console.log("Client with uid %s now has id number %s", who, connected);
     }
     else if (command === "START") {
-      // TODO
+      ws.send(String(rawMsg));
     }
     else if (command === "DRAW") {
       ws.send(String(rawMsg));
