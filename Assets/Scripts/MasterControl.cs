@@ -81,7 +81,8 @@ public class MasterControl : MonoBehaviour {
 
     IEnumerator Socket() {
         // Connect to Websocket
-        socket = new WebSocket(new Uri("ws://" + Constants.IP + ":" + Constants.PORT));
+        socket = new WebSocket(new Uri("ws://e6c9c783.ngrok.io"));
+//        socket = new WebSocket(new Uri("ws://localhost:8000"));
         yield return StartCoroutine(socket.Connect());
         socket.SendString("JOIN|" + username);
         Debug.Log("Sent join request");
