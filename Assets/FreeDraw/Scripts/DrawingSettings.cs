@@ -57,6 +57,41 @@ namespace FreeDraw
             SetMarkerColour(c);
             Drawable.drawable.SetPenBrush();
         }
+        public void SetMarkerBlack()
+        {
+            Color c = Color.black;
+            c.a = Transparency;
+            SetMarkerColour(c);
+            Drawable.drawable.SetPenBrush();
+        }
+        public void SetMarkerYellow()
+        {
+            Color c = Color.yellow;
+            c.a = Transparency;
+            SetMarkerColour(c);
+            Drawable.drawable.SetPenBrush();
+        }
+        public void SetMarkerBrown()
+        {
+            Color c = new Color(0.4f, 0.25f, 0.13f);
+            c.a = Transparency;
+            SetMarkerColour(c);
+            Drawable.drawable.SetPenBrush();
+        }
+        public void SetMarkerOrange()
+        {
+            Color c = new Color(1.0f, 0.65f, 0f);
+            c.a = Transparency;
+            SetMarkerColour(c);
+            Drawable.drawable.SetPenBrush();
+        }
+        public void SetMarkerPurple()
+        {
+            Color c = new Color(0.5f, 0f, 0.5f);
+            c.a = Transparency;
+            SetMarkerColour(c);
+            Drawable.drawable.SetPenBrush();
+        }
         public void SetEraser()
         {
             //SetMarkerColour(new Color(255f, 255f, 255f, 0f));

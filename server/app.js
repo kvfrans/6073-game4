@@ -27,6 +27,7 @@ const directory = {};
 const games = new Set();
 
 const wsClients = [];
+const players = [];
 
 var connected = 0;
 
@@ -41,10 +42,19 @@ app.ws("/", (ws, req) => {
     console.log(`Received: ${rawMsg}`);
     const [command,who,data] = String(rawMsg).split("|");
     if (command === "JOIN") {
+      if (players.length >= 4) // too many people
+        return; // TODO!!
       connected += 1;
-      ws.send("CONFIRM|"+who+"|"+connected);
+      ws.send("CONFIRM|" + who + "|" + connected);
+      players.push(who);
+      var playerStr = "";
+      players.forEach((x) => playerStr += "_" + x);
+      ws.send("PLAYERS|" + playerStr.substring(1));
       console.log("Client with uid %s now has id number %s", who, connected);
-    } 
+    }
+    else if (command === "START") {
+      // TODO
+    }
     else if (command === "DRAW") {
       ws.send(String(rawMsg));
     }
