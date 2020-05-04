@@ -61,7 +61,9 @@
   <ItemGroup>
     <Compile Include="Assets\FreeDraw\Scripts\Drawable.cs" />
     <Compile Include="Assets\FreeDraw\Scripts\DrawingSettings.cs" />
+    <Compile Include="Assets\FreeDraw\Scripts\GameFlow.cs" />
     <Compile Include="Assets\FreeDraw\Scripts\RemoteCanvas.cs" />
+    <Compile Include="Assets\FreeDraw\Scripts\WordBank.cs" />
     <Compile Include="Assets\Scripts\MasterControl.cs" />
     <Compile Include="Assets\Scripts\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Scripts\WebSocket\ws_script.cs" />
