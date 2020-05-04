@@ -124,47 +124,47 @@ public class MasterControl : MonoBehaviour {
                     string b64 = split[2];
                     byte[] imageData = Convert.FromBase64String(b64);
                     int who_drew = System.Convert.ToInt32(split[1]);
-                    if (client_id == 0) {
-                        if (who_drew == 1) {
-                            dc.canvas1.sprite.texture.LoadImage(imageData);
-                        }
-                        if (who_drew == 2) {
-                            dc.canvas2.sprite.texture.LoadImage(imageData);
-                        }
-                        if (who_drew == 3) {
-                            dc.canvas3.sprite.texture.LoadImage(imageData);
-                        }
-                    }
                     if (client_id == 1) {
-                        if (who_drew == 0) {
+                        if (who_drew == 2) {
                             dc.canvas1.sprite.texture.LoadImage(imageData);
                         }
-                        if (who_drew == 2) {
+                        if (who_drew == 3) {
                             dc.canvas2.sprite.texture.LoadImage(imageData);
                         }
-                        if (who_drew == 3) {
+                        if (who_drew == 4) {
                             dc.canvas3.sprite.texture.LoadImage(imageData);
                         }
                     }
                     if (client_id == 2) {
-                        if (who_drew == 0) {
+                        if (who_drew == 1) {
                             dc.canvas1.sprite.texture.LoadImage(imageData);
                         }
-                        if (who_drew == 1) {
+                        if (who_drew == 3) {
                             dc.canvas2.sprite.texture.LoadImage(imageData);
                         }
-                        if (who_drew == 3) {
+                        if (who_drew == 4) {
                             dc.canvas3.sprite.texture.LoadImage(imageData);
                         }
                     }
                     if (client_id == 3) {
-                        if (who_drew == 0) {
+                        if (who_drew == 1) {
                             dc.canvas1.sprite.texture.LoadImage(imageData);
                         }
-                        if (who_drew == 1) {
+                        if (who_drew == 2) {
                             dc.canvas2.sprite.texture.LoadImage(imageData);
                         }
+                        if (who_drew == 4) {
+                            dc.canvas3.sprite.texture.LoadImage(imageData);
+                        }
+                    }
+                    if (client_id == 4) {
+                        if (who_drew == 1) {
+                            dc.canvas1.sprite.texture.LoadImage(imageData);
+                        }
                         if (who_drew == 2) {
+                            dc.canvas2.sprite.texture.LoadImage(imageData);
+                        }
+                        if (who_drew == 3) {
                             dc.canvas3.sprite.texture.LoadImage(imageData);
                         }
                     }
