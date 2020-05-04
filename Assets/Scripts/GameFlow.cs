@@ -17,7 +17,7 @@ public class GameFlow : MonoBehaviour
             return instance;
         }
     }
-    public bool isScholar = true;
+    public bool isScholar = false;
     public string state = "Ready";
     public TextMesh roleText;
     public TextMesh timerText;
@@ -45,7 +45,13 @@ public class GameFlow : MonoBehaviour
     {
         if (state == "Done")
         {
-            SceneManager.LoadScene("DiscussionScene");
+            if (isScholar)
+            {
+                SceneManager.LoadScene("ScholarDiscussionScene");
+            } else
+            {
+                SceneManager.LoadScene("CheaterDiscussionScene");
+            }
         }
         else if (state == "Ready")
         {
