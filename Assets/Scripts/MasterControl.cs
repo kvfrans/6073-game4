@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
@@ -18,7 +19,7 @@ public class MasterControl : MonoBehaviour {
 
     // start scene
     private Button joinButton;
-    private GameObject usernameInput;
+    private TextMeshProUGUI usernameText;
 
     // lobby scene
     private GameObject[] lobbyPlayerAvatars;
@@ -44,10 +45,9 @@ public class MasterControl : MonoBehaviour {
         joinButton = GameObject.Find("Join Button").GetComponent<Button>();
         joinButton.onClick.AddListener(() => JoinButtonClicked());
         joinButton.gameObject.SetActive(true);
-        usernameInput = GameObject.Find("Username Input");
+        usernameText = GameObject.Find("Username Text").GetComponent<TextMeshProUGUI>();
         Debug.Log("Start scene initiated and join button activated");
-        // StartCoroutine(DrawableSend());
-        username = "ezou";
+        username = "";
 
         // Initialize sounds
         soundeffect = this.gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
@@ -56,7 +56,13 @@ public class MasterControl : MonoBehaviour {
 
     void JoinButtonClicked() {
         Debug.Log("Join button clicked");
-        // username = usernameInput.GetComponent<Text>().text;
+        username = usernameText.text;
+        username = username.Substring(0, username.Length - 1); // for some reason theres always ASCII character 8203 (zero width space) at the end
+        Debug.Log("Username is: " + username);
+        if (username.Length < Constants.MIN_USERNAME_LENGTH) {
+            Debug.Log("Username must be between 3-15 characters");
+            return;
+        }
         StartCoroutine(Socket());
         SceneManager.LoadScene("LobbyScene", LoadSceneMode.Single);
     }
