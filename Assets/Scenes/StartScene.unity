@@ -1544,6 +1544,7 @@ MonoBehaviour:
   NetworkSpeed: 5
   gameId: CMS
   dc: {fileID: 0}
+  joinGreeting: {fileID: 8300000, guid: cf44c28db95a9f14780278cc7a7bb0f6, type: 3}
 --- !u!1 &2130457696
 GameObject:
   m_ObjectHideFlags: 0
