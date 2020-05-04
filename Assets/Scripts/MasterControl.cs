@@ -18,6 +18,7 @@ public class MasterControl : MonoBehaviour {
 
     // start scene
     private Button joinButton;
+    private GameObject usernameInput;
 
     // lobby scene
     private GameObject[] lobbyPlayerAvatars;
@@ -43,6 +44,7 @@ public class MasterControl : MonoBehaviour {
         joinButton = GameObject.Find("Join Button").GetComponent<Button>();
         joinButton.onClick.AddListener(() => JoinButtonClicked());
         joinButton.gameObject.SetActive(true);
+        usernameInput = GameObject.Find("Username Input");
         Debug.Log("Start scene initiated and join button activated");
         // StartCoroutine(DrawableSend());
         username = "ezou";
@@ -54,6 +56,7 @@ public class MasterControl : MonoBehaviour {
 
     void JoinButtonClicked() {
         Debug.Log("Join button clicked");
+        // username = usernameInput.GetComponent<Text>().text;
         StartCoroutine(Socket());
         SceneManager.LoadScene("LobbyScene", LoadSceneMode.Single);
     }
