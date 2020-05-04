@@ -32,6 +32,11 @@ public class MasterControl : MonoBehaviour {
     public string word;
     public bool isScholar = true;
 
+    // sound effects
+    public static AudioSource soundeffect;
+    public static readonly Dictionary<string, AudioClip> sounds = new Dictionary<string, AudioClip>();
+    public AudioClip joinGreeting;
+
     void Start() {
         UnityEngine.Object.DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -41,6 +46,10 @@ public class MasterControl : MonoBehaviour {
         Debug.Log("Start scene initiated and join button activated");
         // StartCoroutine(DrawableSend());
         username = "ezou";
+
+        // Initialize sounds
+        soundeffect = this.gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
+        sounds.Add("JoinGreeting", joinGreeting);
     }
 
     void JoinButtonClicked() {
@@ -114,6 +123,7 @@ public class MasterControl : MonoBehaviour {
                         waitingMsg.SetActive(false);
                         startButton.gameObject.SetActive(true);
                     }
+                    soundeffect.PlayOneShot(sounds["JoinGreeting"], 0.5f);
                 }
                 else if (split[0] == "START") {
                     cheater_id = System.Convert.ToInt32(split[1]);

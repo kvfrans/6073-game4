@@ -277,7 +277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03510ea897333a3478c3615be62b832e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transparency: 1
 --- !u!4 &198275829
 Transform:
   m_ObjectHideFlags: 0
@@ -1218,15 +1217,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 749892207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 571045d48cec88d48848f53bf379f673, type: 3}
+  m_Script: {fileID: 11500000, guid: af95ecfd1ec344527ad85a2d137c39ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Drawing_Layers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   Is_Drawing_Canvas: 1
   Reset_Canvas_On_Play: 1
-  Reset_Colour: {r: 1, g: 1, b: 1, a: 1}
+  Reset_Colour: {r: 0, g: 0, b: 0, a: 0}
   clean_colours_array: []
   cur_colors: []
   mc: {fileID: 0}
@@ -1253,7 +1252,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 749892207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dc5e4009df194fbcbb830f563699dba, type: 3}
+  m_Script: {fileID: 11500000, guid: c420e98ed38d04fc18a085aebec892b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isScholar: 1
@@ -1585,15 +1584,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571045d48cec88d48848f53bf379f673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Drawing_Layers:
-    serializedVersion: 2
-    m_Bits: 256
-  Is_Drawing_Canvas: 0
-  Reset_Canvas_On_Play: 1
-  Reset_Colour: {r: 1, g: 1, b: 1, a: 1}
-  clean_colours_array: []
-  cur_colors: []
-  mc: {fileID: 0}
 --- !u!212 &975978399
 SpriteRenderer:
   m_ObjectHideFlags: 0

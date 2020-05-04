@@ -17,7 +17,7 @@ public class GameFlow : MonoBehaviour
             return instance;
         }
     }
-    public bool isScholar = true;
+    public bool isScholar = false;
     public string state = "Ready";
     public TextMesh roleText;
     public TextMesh timerText;

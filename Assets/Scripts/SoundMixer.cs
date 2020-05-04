@@ -6,13 +6,8 @@ public class SoundMixer : MonoBehaviour
 {
 
     public static AudioSource bgm;
-    public static AudioSource soundeffect;
 
     public AudioClip track;
-
-    public AudioClip test;
-
-    public static readonly Dictionary<string, AudioClip> sounds = new Dictionary<string, AudioClip>();
 
 
     // Start is called before the first frame update
@@ -20,14 +15,11 @@ public class SoundMixer : MonoBehaviour
     {
 
         bgm = this.gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
-        soundeffect = this.gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
 
         bgm.loop = true;
         bgm.clip = track;
-        bgm.volume = 0.5f;
+        bgm.volume = 0.25f;
         bgm.Play();
-
-        sounds.Add("test sound effect", test);
 
     }
 
