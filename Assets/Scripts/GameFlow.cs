@@ -21,7 +21,7 @@ public class GameFlow : MonoBehaviour
     public string state = "Ready";
     public TextMesh roleText;
     public TextMesh timerText;
-    private float timer = 50;
+    private float timer = 10;
     public Transform cheaterBlock;
 
     public static string word;
@@ -49,7 +49,14 @@ public class GameFlow : MonoBehaviour
     {
         timer -= Time.deltaTime;
         if (timer < 0) {
-            SceneManager.LoadScene("DiscussionScene");
+            if (isScholar)
+            {
+                SceneManager.LoadScene("ScholarDiscussionScene");
+
+            } else
+            {
+                SceneManager.LoadScene("CheaterDiscussionScene");
+            }
         }
         timerText.text = "" + Mathf.Round(timer * 10f) / 10f;
     }
