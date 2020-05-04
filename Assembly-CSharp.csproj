@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FreeDraw\Scripts\WordBank.cs" />
     <Compile Include="Assets\Scripts\Constants.cs" />
     <Compile Include="Assets\Scripts\Discussion.cs" />
     <Compile Include="Assets\Scripts\Drawable.cs" />
@@ -78,7 +79,6 @@
     <Compile Include="Assets\Scripts\StartScene.cs" />
     <Compile Include="Assets\Scripts\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Scripts\WebSocket\ws_script.cs" />
-    <Compile Include="Assets\Scripts\WordBank.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

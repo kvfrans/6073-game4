@@ -34,22 +34,24 @@ public class MasterControl : MonoBehaviour {
         UnityEngine.Object.DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += OnSceneLoaded;
         joinButton = GameObject.Find("Join Button").GetComponent<Button>();
-        joinButton.onClick.AddListener(() => joinButtonClicked());
+        joinButton.onClick.AddListener(() => JoinButtonClicked());
         joinButton.gameObject.SetActive(true);
         Debug.Log("Start scene initiated and join button activated");
         // StartCoroutine(DrawableSend());
         username = "ezou";
     }
 
-    void joinButtonClicked() {
+    void JoinButtonClicked() {
         Debug.Log("Join button clicked");
         StartCoroutine(Socket());
         SceneManager.LoadScene("LobbyScene", LoadSceneMode.Single);
     }
 
-    void startButtonClicked() {
+    void StartButtonClicked() {
         Debug.Log("Start button clicked");
-        socket.SendString("START|" + username);
+        int cheater = Random.Range(1, 1 + Constants.NUM_PLAYERS);
+        string word = Constants.DICTIONARY[Random.Range(0, Constants.DICTIONARY.Length)];
+        socket.SendString("START|" + cheater + "|" + word);
     }
 
     // called second
@@ -75,7 +77,7 @@ public class MasterControl : MonoBehaviour {
         waitingMsg = GameObject.Find("waiting");
         startButton = GameObject.Find("Start Button").GetComponent<Button>();
         // setup button
-        startButton.onClick.AddListener(() => startButtonClicked());
+        startButton.onClick.AddListener(() => StartButtonClicked());
         startButton.gameObject.SetActive(false);
     }
 
