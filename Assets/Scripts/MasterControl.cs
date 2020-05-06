@@ -36,8 +36,11 @@ public class MasterControl : MonoBehaviour {
 
     // sound effects
     public static AudioSource soundeffect;
-    public static readonly Dictionary<string, AudioClip> sounds = new Dictionary<string, AudioClip>();
     public AudioClip joinGreeting;
+    public AudioClip narratorIntro;
+    public AudioClip narratorWarning;
+    public AudioClip narratorDiscussion1;
+    public AudioClip narratorDiscussion2;
 
     void Start() {
         UnityEngine.Object.DontDestroyOnLoad(this);
@@ -51,7 +54,6 @@ public class MasterControl : MonoBehaviour {
 
         // Initialize sounds
         soundeffect = this.gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
-        sounds.Add("JoinGreeting", joinGreeting);
     }
 
     void JoinButtonClicked() {
@@ -69,8 +71,24 @@ public class MasterControl : MonoBehaviour {
 
     void StartButtonClicked() {
         Debug.Log("Start button clicked");
+        startButton.gameObject.SetActive(false);
         int cheater = Random.Range(1, 1 + Constants.NUM_PLAYERS);
         string word = Constants.DICTIONARY[Random.Range(0, Constants.DICTIONARY.Length)];
+
+        soundeffect.PlayOneShot(narratorIntro, 0.5f);
+        StartCoroutine(waitForSound(socket));
+        
+    }
+
+    IEnumerator waitForSound(Websocket socket)
+    {
+        //Wait Until Sound has finished playing
+        while (soundeffect.isPlaying)
+        {
+            yield return null;
+        }
+
+        //Auidio has finished playing, send message to server
         socket.SendString("START|" + cheater + "|" + word);
     }
 
@@ -104,7 +122,7 @@ public class MasterControl : MonoBehaviour {
     IEnumerator Socket() {
         // Connect to Websocket
         socket = new WebSocket(new Uri("ws://e6c9c783.ngrok.io"));
-//        socket = new WebSocket(new Uri("ws://localhost:8000"));
+        //socket = new WebSocket(new Uri("ws://localhost:8000"));
         yield return StartCoroutine(socket.Connect());
         socket.SendString("JOIN|" + username);
         Debug.Log("Sent join request");
@@ -132,7 +150,7 @@ public class MasterControl : MonoBehaviour {
                         waitingMsg.SetActive(false);
                         startButton.gameObject.SetActive(true);
                     }
-                    soundeffect.PlayOneShot(sounds["JoinGreeting"], 0.5f);
+                    soundeffect.PlayOneShot(joinGreeting, 0.5f);
                 }
                 else if (split[0] == "START") {
                     cheater_id = System.Convert.ToInt32(split[1]);
