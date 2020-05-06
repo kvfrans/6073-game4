@@ -21,7 +21,7 @@ public class GameFlow : MonoBehaviour
     public string state = "Ready";
     public TextMesh roleText;
     public TextMesh timerText;
-    private float timer = 10;
+    private float timer = 50;
     public Transform cheaterBlock;
 
     public static string word;
@@ -33,7 +33,7 @@ public class GameFlow : MonoBehaviour
         }
         
         roleText.text = "";
-        timer = 10;
+        timer = 50;
         if (isScholar)
         {
             roleText.text = "You are the scholar! The word is " + GameObject.Find("MasterControl").GetComponent<MasterControl>().word;
