@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/FreeDraw/ExampleDrawingSceneKevinTest.unity
+- path: Assets/Scenes/EndSceneScholars.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

@@ -104,7 +104,7 @@ public class MasterControl : MonoBehaviour {
     IEnumerator Socket() {
         // Connect to Websocket
         // socket = new WebSocket(new Uri("ws://e6c9c783.ngrok.io"));
-        socket = new WebSocket(new Uri("ws://10ec0522.ngrok.io"));
+        socket = new WebSocket(new Uri("ws://7cf7cbc7.ngrok.io"));
         // http://10ec0522.ngrok.io
 //        socket = new WebSocket(new Uri("ws://localhost:8000"));
         yield return StartCoroutine(socket.Connect());
