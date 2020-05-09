@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Discussion : MonoBehaviour
@@ -12,11 +13,11 @@ public class Discussion : MonoBehaviour
     public void GuessWord()
     {
         string guess = inputField.GetComponent<Text>().text;
-        if (guess == GlobalVariables.word)
-        {
+        if (guess == GameObject.Find("MasterControl").GetComponent<MasterControl>().word) {
+            SceneManager.LoadScene("EndSceneCheater");
             textDisplay.GetComponent<Text>().text = "Correct, you win!";
-        } else
-        {
+        } else {
+            SceneManager.LoadScene("EndSceneScholar");
             textDisplay.GetComponent<Text>().text = "Incorrect, you lose!";
         }
     }
