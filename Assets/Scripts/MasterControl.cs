@@ -27,6 +27,8 @@ public class MasterControl : MonoBehaviour {
     private GameObject waitingMsg;
     private Button startButton;
 
+    // scholar discussion scene
+
     // game variables
     private string username;
     private string[] players;
@@ -97,6 +99,8 @@ public class MasterControl : MonoBehaviour {
         Debug.Log("OnSceneLoaded: " + scene.name + ", mode: " + mode);
         if (scene.name == "LobbyScene")
             StartLobby();
+        if (scene.name == "ScholarDiscussionScene")
+            StartScholarDiscussion();
     }
 
     void StartLobby() {
@@ -117,6 +121,12 @@ public class MasterControl : MonoBehaviour {
         // setup button
         startButton.onClick.AddListener(() => StartButtonClicked());
         startButton.gameObject.SetActive(false);
+    }
+
+    void StartScholarDiscussion() {
+        for (int i = 1; i <= Constants.NUM_PLAYERS; i++) {
+            GameObject.Find("Text" + i).GetComponent<Text>().text = players[i - 1];
+        }
     }
 
     IEnumerator Socket() {
