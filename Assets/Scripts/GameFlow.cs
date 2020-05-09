@@ -33,6 +33,7 @@ public class GameFlow : MonoBehaviour
     public AudioClip narratorDiscussion2;
     private bool warningPlayed = false;
     private string scene;
+    private bool playedSound = false;
 
     void Start() {
         isScholar = GameObject.Find("MasterControl").GetComponent<MasterControl>().isScholar;
@@ -75,8 +76,11 @@ public class GameFlow : MonoBehaviour
                 scene = "CheaterDiscussionScene";
             }
 
-            soundeffect.PlayOneShot(narratorDiscussion1, 0.3f);
-            StartCoroutine(waitForSound(scene));
+            if (!playedSound) {
+                playedSound = true;
+                soundeffect.PlayOneShot(narratorDiscussion1, 0.3f);
+                StartCoroutine(waitForSound(scene));
+            }
         }
         timerText.text = "" + Mathf.Round(timer * 10f) / 10f;
         
