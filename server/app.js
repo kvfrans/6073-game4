@@ -65,6 +65,7 @@ app.ws("/", (ws, req) => {
       }
     }
     else if (command === "CHEATER_GUESS") {
+      console.log(String(rawMsg));
       for(var i = 0; i < wsClients.length; i++) {
         wsClients[i].send(String(rawMsg));
       }

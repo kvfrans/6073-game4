@@ -223,6 +223,8 @@ public class MasterControl : MonoBehaviour {
                 }
                 else if (split[0] == "CHEATER_GUESS") {
                     if (split[2] == word) {
+                        Debug.Log(word);
+                        Debug.Log(split[2]);
                         SceneManager.LoadScene("EndSceneCheater");
                     }
                 }
