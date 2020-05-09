@@ -138,7 +138,7 @@ public class MasterControl : MonoBehaviour {
         while (true) {
             string reply = socket.RecvString();
             while (reply != null) {
-                Debug.Log(reply);
+                // Debug.Log(reply);
                 string[] split = reply.Split('|');
                 if (split[0] == "CONFIRM") {
                     string uid = split[1];
