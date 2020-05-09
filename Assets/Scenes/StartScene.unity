@@ -1547,6 +1547,10 @@ MonoBehaviour:
   word: 
   isScholar: 1
   joinGreeting: {fileID: 8300000, guid: cf44c28db95a9f14780278cc7a7bb0f6, type: 3}
+  narratorIntro: {fileID: 8300000, guid: 966a47bb86805694e8957b8b48cd433d, type: 3}
+  narratorWarning: {fileID: 8300000, guid: 9ae3cb8a5c6e57846b0f9af51568c910, type: 3}
+  narratorDiscussion1: {fileID: 8300000, guid: 6018d91cdb3eb2c48b59ec998250f47a, type: 3}
+  narratorDiscussion2: {fileID: 8300000, guid: eb6e30b252f90474d895445ddb77c207, type: 3}
 --- !u!1 &2130457696
 GameObject:
   m_ObjectHideFlags: 0
