@@ -27,6 +27,8 @@ public class MasterControl : MonoBehaviour {
     private GameObject waitingMsg;
     private Button startButton;
 
+    // scholar discussion scene
+
     // game variables
     private string username;
     private string[] players;
@@ -59,7 +61,7 @@ public class MasterControl : MonoBehaviour {
         username = username.Substring(0, username.Length - 1); // for some reason theres always ASCII character 8203 (zero width space) at the end
         Debug.Log("Username is: " + username);
         if (username.Length < Constants.MIN_USERNAME_LENGTH) {
-            Debug.Log("Username must be between 3-15 characters");
+            Debug.Log("Username must be between 3-10 characters");
             return;
         }
         StartCoroutine(Socket());
@@ -81,6 +83,8 @@ public class MasterControl : MonoBehaviour {
         Debug.Log("OnSceneLoaded: " + scene.name + ", mode: " + mode);
         if (scene.name == "LobbyScene")
             StartLobby();
+        if (scene.name == "ScholarDiscussionScene")
+            StartScholarDiscussion();
     }
 
     void StartLobby() {
@@ -101,6 +105,12 @@ public class MasterControl : MonoBehaviour {
         // setup button
         startButton.onClick.AddListener(() => StartButtonClicked());
         startButton.gameObject.SetActive(false);
+    }
+
+    void StartScholarDiscussion() {
+        for (int i = 1; i <= Constants.NUM_PLAYERS; i++) {
+            GameObject.Find("Text" + i).GetComponent<Text>().text = players[i - 1];
+        }
     }
 
     IEnumerator Socket() {
