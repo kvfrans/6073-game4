@@ -18,7 +18,7 @@ public class SoundMixer : MonoBehaviour
 
         bgm.loop = true;
         bgm.clip = track;
-        bgm.volume = 0.25f;
+        bgm.volume = 0.1f;
         bgm.Play();
 
     }
