@@ -120,7 +120,7 @@ public class MasterControl : MonoBehaviour {
         }
     }
 
-    void CheaterGuess(string guess) {
+    public void CheaterGuess(string guess) {
         Debug.Log("Cheater has guessed the word " + guess);
         socket.SendString("CHEATER_GUESS|" + username + "|" + guess);
     }

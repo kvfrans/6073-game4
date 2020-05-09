@@ -8,7 +8,6 @@ public class Discussion : MonoBehaviour
     public string guess;
     public GameObject promptText;
     public GameObject inputField;
-    public GameObject textDisplay;
 
     public void GuessWord()
     {
