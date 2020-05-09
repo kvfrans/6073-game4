@@ -13,13 +13,7 @@ public class Discussion : MonoBehaviour
     public void GuessWord()
     {
         string guess = inputField.GetComponent<Text>().text;
-        if (guess == GameObject.Find("MasterControl").GetComponent<MasterControl>().word) {
-            SceneManager.LoadScene("EndSceneCheater");
-            textDisplay.GetComponent<Text>().text = "Correct, you win!";
-        } else {
-            SceneManager.LoadScene("EndSceneScholar");
-            textDisplay.GetComponent<Text>().text = "Incorrect, you lose!";
-        }
+        GameObject.Find("MasterControl").GetComponent<MasterControl>().CheaterGuess(guess);
     }
 
     // Use this for initialization

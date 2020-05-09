@@ -1126,7 +1126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   track: {fileID: 8300000, guid: c12d504d74d9d6f4991446b71c0cd8c5, type: 3}
-  test: {fileID: 8300000, guid: c12d504d74d9d6f4991446b71c0cd8c5, type: 3}
 --- !u!1 &1452379880
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,6 +28,7 @@ public class MasterControl : MonoBehaviour {
     private Button startButton;
 
     // scholar discussion scene
+    private Button[] playerButtons;
 
     // game variables
     private string username;
@@ -75,7 +76,11 @@ public class MasterControl : MonoBehaviour {
         int cheater = Random.Range(1, 1 + Constants.NUM_PLAYERS);
         string word = Constants.DICTIONARY[Random.Range(0, Constants.DICTIONARY.Length)];
         socket.SendString("START|" + cheater + "|" + word);
-        
+    }
+
+    void PlayerButtonClicked(Int32 player) {
+        Debug.Log("Player " + player + " button clicked");
+        socket.SendString("SCHOLAR_GUESS|" + username + "|" + player);
     }
 
     // called second
@@ -108,9 +113,17 @@ public class MasterControl : MonoBehaviour {
     }
 
     void StartScholarDiscussion() {
+        playerButtons = new Button[Constants.NUM_PLAYERS];
         for (int i = 1; i <= Constants.NUM_PLAYERS; i++) {
+            playerButtons[i - 1] = GameObject.Find("Button" + i).GetComponent<Button>();
+            playerButtons[i - 1].onClick.AddListener(() => PlayerButtonClicked(i));
             GameObject.Find("Text" + i).GetComponent<Text>().text = players[i - 1];
         }
+    }
+
+    void CheaterGuess(string guess) {
+        Debug.Log("Cheater has guessed the word " + guess);
+        socket.SendString("CHEATER_GUESS|" + username + "|" + guess);
     }
 
     IEnumerator Socket() {
@@ -157,7 +170,6 @@ public class MasterControl : MonoBehaviour {
                     }
                     soundeffect.PlayOneShot(narratorIntro, 0.3f);
                     StartCoroutine(waitForSound("ExampleDrawingSceneKevinTest"));
-                    
                 }
                 else if (split[0] == "DRAW") {
                     // Debug.Log(reply);
@@ -207,6 +219,11 @@ public class MasterControl : MonoBehaviour {
                         if (who_drew == 3) {
                             dc.canvas3.sprite.texture.LoadImage(imageData);
                         }
+                    }
+                }
+                else if (split[0] == "CHEATER_GUESS") {
+                    if (split[2] == word) {
+                        SceneManager.LoadScene("EndSceneCheater");
                     }
                 }
 
