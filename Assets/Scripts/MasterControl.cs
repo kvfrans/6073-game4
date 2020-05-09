@@ -38,9 +38,6 @@ public class MasterControl : MonoBehaviour {
     public static AudioSource soundeffect;
     public AudioClip joinGreeting;
     public AudioClip narratorIntro;
-    public AudioClip narratorWarning;
-    public AudioClip narratorDiscussion1;
-    public AudioClip narratorDiscussion2;
 
     void Start() {
         UnityEngine.Object.DontDestroyOnLoad(this);
@@ -73,23 +70,10 @@ public class MasterControl : MonoBehaviour {
         Debug.Log("Start button clicked");
         startButton.gameObject.SetActive(false);
 
-        soundeffect.PlayOneShot(narratorIntro, 0.5f);
-        StartCoroutine(waitForSound(socket));
-        
-    }
-
-    IEnumerator waitForSound(WebSocket socket)
-    {
-        //Wait Until Sound has finished playing
-        while (soundeffect.isPlaying)
-        {
-            yield return null;
-        }
-        
         int cheater = Random.Range(1, 1 + Constants.NUM_PLAYERS);
         string word = Constants.DICTIONARY[Random.Range(0, Constants.DICTIONARY.Length)];
-        //Auidio has finished playing, send message to server
         socket.SendString("START|" + cheater + "|" + word);
+        
     }
 
     // called second
@@ -161,7 +145,9 @@ public class MasterControl : MonoBehaviour {
                     if (cheater_id == client_id) {
                         isScholar = false;
                     }
-                    SceneManager.LoadScene("ExampleDrawingSceneKevinTest");
+                    soundeffect.PlayOneShot(narratorIntro, 0.3f);
+                    StartCoroutine(waitForSound("ExampleDrawingSceneKevinTest"));
+                    
                 }
                 else if (split[0] == "DRAW") {
                     // Debug.Log(reply);
@@ -220,7 +206,17 @@ public class MasterControl : MonoBehaviour {
         }
     }
 
+    IEnumerator waitForSound(string scene)
+    {
+        //Wait Until Sound has finished playing
+        while (soundeffect.isPlaying)
+        {
+            yield return null;
+        }
 
+        //Auidio has finished playing, change scene
+        SceneManager.LoadScene(scene);
+    }
 
     public void SendStringServer(string command, string s) {
         socket.SendString(command + "|" + client_id.ToString() + "|" + s);

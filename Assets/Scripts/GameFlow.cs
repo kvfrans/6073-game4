@@ -26,6 +26,14 @@ public class GameFlow : MonoBehaviour
 
     public static string word;
 
+    // sound effects
+    public static AudioSource soundeffect;
+    public AudioClip narratorWarning;
+    public AudioClip narratorDiscussion1;
+    public AudioClip narratorDiscussion2;
+    private bool warningPlayed = false;
+    private string scene;
+
     void Start() {
         isScholar = GameObject.Find("MasterControl").GetComponent<MasterControl>().isScholar;
         if (!isScholar) {
@@ -42,22 +50,47 @@ public class GameFlow : MonoBehaviour
         {
             roleText.text = "You are the cheater!";
         }
+
+        //init sounds
+        soundeffect = this.gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
-        if (timer < 0) {
+        if(timer < 10 && !warningPlayed)
+        {
+            soundeffect.PlayOneShot(narratorWarning, 0.3f);
+            warningPlayed = true;
+        }
+        else if (timer < 0) {
             if (isScholar)
             {
-                SceneManager.LoadScene("ScholarDiscussionScene");
+                scene = "ScholarDiscussionScene";
 
             } else
             {
-                SceneManager.LoadScene("CheaterDiscussionScene");
+                scene = "CheaterDiscussionScene";
             }
         }
         timerText.text = "" + Mathf.Round(timer * 10f) / 10f;
+
+        soundeffect.PlayOneShot(narratorDiscussion1, 0.3f);
+        StartCoroutine(waitForSound(scene));
     }
+
+    IEnumerator waitForSound(string scene)
+    {
+        //Wait Until Sound has finished playing
+        while (soundeffect.isPlaying)
+        {
+            yield return null;
+        }
+
+        //Auidio has finished playing, change scene
+        SceneManager.LoadScene(scene);
+    }
+
 }
