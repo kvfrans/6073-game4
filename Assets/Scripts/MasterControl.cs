@@ -159,7 +159,7 @@ public class MasterControl : MonoBehaviour {
                     StartCoroutine(waitForSound("ExampleDrawingSceneKevinTest"));
                     
                 }
-                else if (split[0] == "DRAW") {
+                else if (split[0] == "DRAW" && SceneManager.GetActiveScene().name == "ExampleDrawingSceneKevinTest") {
                     // Debug.Log(reply);
                     string b64 = split[2];
                     byte[] imageData = Convert.FromBase64String(b64);
