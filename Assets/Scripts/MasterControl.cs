@@ -70,7 +70,6 @@ public class MasterControl : MonoBehaviour {
 
     void StartButtonClicked() {
         Debug.Log("Start button clicked");
-        startButton.gameObject.SetActive(false);
 
         int cheater = Random.Range(1, 1 + Constants.NUM_PLAYERS);
         string word = Constants.DICTIONARY[Random.Range(0, Constants.DICTIONARY.Length)];
@@ -156,10 +155,11 @@ public class MasterControl : MonoBehaviour {
                         isScholar = false;
                     }
                     soundeffect.PlayOneShot(narratorIntro, 0.3f);
+                    startButton.gameObject.SetActive(false);
                     StartCoroutine(waitForSound("ExampleDrawingSceneKevinTest"));
                     
                 }
-                else if (split[0] == "DRAW") {
+                else if (split[0] == "DRAW" && SceneManager.GetActiveScene().name == "ExampleDrawingSceneKevinTest") {
                     // Debug.Log(reply);
                     string b64 = split[2];
                     byte[] imageData = Convert.FromBase64String(b64);

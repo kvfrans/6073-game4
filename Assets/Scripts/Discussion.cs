@@ -15,10 +15,8 @@ public class Discussion : MonoBehaviour
         string guess = inputField.GetComponent<Text>().text;
         if (guess == GameObject.Find("MasterControl").GetComponent<MasterControl>().word) {
             SceneManager.LoadScene("EndSceneCheater");
-            textDisplay.GetComponent<Text>().text = "Correct, you win!";
         } else {
             SceneManager.LoadScene("EndSceneScholar");
-            textDisplay.GetComponent<Text>().text = "Incorrect, you lose!";
         }
     }
 
