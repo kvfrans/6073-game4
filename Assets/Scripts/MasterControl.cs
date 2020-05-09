@@ -62,7 +62,7 @@ public class MasterControl : MonoBehaviour {
         username = username.Substring(0, username.Length - 1); // for some reason theres always ASCII character 8203 (zero width space) at the end
         Debug.Log("Username is: " + username);
         if (username.Length < Constants.MIN_USERNAME_LENGTH) {
-            Debug.Log("Username must be between 3-15 characters");
+            Debug.Log("Username must be between 3-10 characters");
             return;
         }
         StartCoroutine(Socket());
