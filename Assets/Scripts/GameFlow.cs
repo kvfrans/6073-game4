@@ -74,11 +74,12 @@ public class GameFlow : MonoBehaviour
             {
                 scene = "CheaterDiscussionScene";
             }
+
+            soundeffect.PlayOneShot(narratorDiscussion1, 0.3f);
+            StartCoroutine(waitForSound(scene));
         }
         timerText.text = "" + Mathf.Round(timer * 10f) / 10f;
-
-        soundeffect.PlayOneShot(narratorDiscussion1, 0.3f);
-        StartCoroutine(waitForSound(scene));
+        
     }
 
     IEnumerator waitForSound(string scene)
